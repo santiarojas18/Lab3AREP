@@ -23,6 +23,7 @@ public class HttpServer
     private static ConcurrentHashMap<String, StringBuffer> cache;
     private static Map<String,WebService> services = new HashMap<String, WebService>();
     private static Map<String, WebService> servicesPost = new HashMap<String, WebService>();
+    public static String locationStaticFiles = "/public";
 
     private HttpServer(){}
 
@@ -31,7 +32,6 @@ public class HttpServer
     }
 
     //as default will search at public
-    public static String locationStaticFiles = "/public";
     public void runServer(String[] args) throws IOException, URISyntaxException {
         cache = new ConcurrentHashMap<>();
 
@@ -213,7 +213,6 @@ public class HttpServer
     private String getTheAction(String uriStr, String webUri, Map<String, WebService> hashOfServices) {
         String outputLine = "";
         if (hashOfServices.containsKey(webUri)) {
-            //Quitar query, se envia el param
             Request req = new Request(uriStr);
             Response res = new Response();
             String temporalRes = hashOfServices.get(webUri).handle(req, res);

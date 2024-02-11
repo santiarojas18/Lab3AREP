@@ -44,7 +44,11 @@ public class MyWebServices {
             return finalResult;
         });
 
+        //Cambio exitoso de directorio
         //HttpServer.location("/changing-directory");
+
+        //Cambio no exitoso de directorio
+        //HttpServer.location("/changing");
 
         HttpServer.getInstance().runServer(args);
     }
